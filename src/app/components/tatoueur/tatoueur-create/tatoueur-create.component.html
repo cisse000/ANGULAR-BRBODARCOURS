@@ -1,0 +1,20 @@
+<a routerLink="/tatoueur" class="btn btn-primary">Retour</a>
+<form [formGroup]="form">
+  <h1>Ajouter un tatoueur : </h1>
+  <mat-form-field appearance="outline" >
+    <mat-label>Nom</mat-label>
+    <input matInput type="text" formControlName="nom">
+    @if (form.get('nom')?.hasError('required')) {
+      <mat-error>Nom is required</mat-error>
+    }
+  </mat-form-field>
+  <mat-form-field appearance="outline" >
+    <mat-label>Style</mat-label>
+    <input matInput type="text" formControlName="style">
+    @if (form.get('style')?.hasError('required')) {
+      <mat-error>Style is required</mat-error>
+    }
+  </mat-form-field>
+  <router-outlet></router-outlet>
+  <button mat-stroked-button (click)="submit()" [disabled]="form.invalid">Valider</button>
+</form>
